@@ -13,4 +13,9 @@ public class AppTest {
         Assertions.assertThat(context.getSecret()).isEqualTo("secret");
         Assertions.assertThat(context.getPayload()).isEqualTo("payload");
     }
+
+    @Test
+    public void testApp(){
+        Assertions.assertThat(new App()).isNotNull();
+    }
 }
