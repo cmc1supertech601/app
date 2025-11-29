@@ -16,6 +16,7 @@ public class AppTest {
 
     @Test
     public void testApp(){
+        System.out.println("Hello World!");
         Assertions.assertThat(new App()).isNotNull();
     }
 }
