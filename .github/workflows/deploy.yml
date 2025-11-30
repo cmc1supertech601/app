@@ -69,28 +69,28 @@ jobs:
           name: built-jar
           path: target/*.jar
 
-    build-validation:
-      needs: [build, deploy]
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v4
+  build-validation:
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-        - name: Download the built artifact
-          uses: actions/download-artifact@v4
-          with:
-            name: built-jar
-            path: ./artifact
+      - name: Download the built artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: built-jar
+          path: ./artifact
 
-        - name: Find JAR file dynamically
-          id: find_jar
-          run: |
-            JAR_FILE=$(ls ./artifact/*.jar)
-            echo "Found JAR: $JAR_FILE"
-            echo "JAR_FILE=$JAR_FILE" >> $GITHUB_ENV
+      - name: Find JAR file dynamically
+        id: find_jar
+        run: |
+          JAR_FILE=$(ls ./artifact/*.jar)
+          echo "Found JAR: $JAR_FILE"
+          echo "JAR_FILE=$JAR_FILE" >> $GITHUB_ENV
 
-        - name: Run Java main method
-          run: java -cp $JAR_FILE com.example.github.App
+      - name: Run Java main method
+        run: java -cp $JAR_FILE com.example.github.App
 
           
 
