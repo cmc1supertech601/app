@@ -79,8 +79,7 @@ jobs:
       - name: Run if previous jobs succeeded
         if: ${{ success() }}
         run: |
-          JAR_FILE=$(ls ./artifact/*.jar)
+          JAR_FILE=$(ls)
           echo "Found JAR: $JAR_FILE"
-          echo "JAR_FILE=$JAR_FILE" >> $GITHUB_ENV
 
 
